@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Self-contained script example in Python.
+"""Standalone script example in Python.
 
 The code for this script is contained in a single file and is
 self-documented. With ``--help``, you can get the purpose of the
