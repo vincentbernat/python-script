@@ -13,7 +13,7 @@ Currently, this script is a simple fizzbuzz generator.
 You can also run tests with::
 
     $ python3 -m pytest -v --doctest-modules \
-              --cov=python-script ./python-script.py
+              --cov=fizzbuzz ./fizzbuzz.py
     $ python3 -m coverage html
 
 To adapt this template to your needs, there are several steps:
@@ -93,6 +93,8 @@ def fizzbuzz(n, fizz, buzz):
     'fizz'
     >>> fizzbuzz(15, 3, 5)
     'fizzbuzz'
+    >>> fizzbuzz(4, 3, 5)
+    4
     >>> fizzbuzz(4, 3, 5)
     4
 
