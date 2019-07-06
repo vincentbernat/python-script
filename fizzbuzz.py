@@ -25,6 +25,7 @@ To adapt this template to your needs, there are several steps:
 
  3. Include your logic in ``main()`` (or in additional functions).
 
+This file is released under the CC0-1.0 license (public domain).
 """
 
 import argparse
