@@ -79,10 +79,20 @@ def setup_logging(options):
     root.setLevel(logging.WARNING)
     logger.setLevel(options.debug and logging.DEBUG or logging.INFO)
     if not options.silent:
-        ch = logging.StreamHandler()
-        ch.setFormatter(logging.Formatter(
-            "%(levelname)s[%(name)s] %(message)s"))
-        root.addHandler(ch)
+        if not sys.stderr.isatty():
+            facility = logging.handlers.SysLogHandler.LOG_DAEMON
+            sh = logging.handlers.SysLogHandler(address='/dev/log',
+                                                facility=facility)
+            sh.setFormatter(logging.Formatter(
+                "{0}[{1}]: %(message)s".format(
+                    logger.name,
+                    os.getpid())))
+            root.addHandler(sh)
+        else:
+            ch = logging.StreamHandler()
+            ch.setFormatter(logging.Formatter(
+                "%(levelname)s[%(name)s] %(message)s"))
+            root.addHandler(ch)
 
 
 def fizzbuzz(n, fizz, buzz):
