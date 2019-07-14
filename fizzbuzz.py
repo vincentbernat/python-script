@@ -54,7 +54,7 @@ def parse_args(args=sys.argv[1:]):
                    help="enable debugging")
     g.add_argument("--silent", "-s", action="store_true",
                    default=False,
-                   help="don't log to console")
+                   help="don't log")
 
     # TODO: modify these options
     g = parser.add_argument_group("fizzbuzz settings")
