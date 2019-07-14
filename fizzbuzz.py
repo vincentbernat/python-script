@@ -106,8 +106,8 @@ def fizzbuzz(n, fizz, buzz):
     'fizzbuzz'
     >>> fizzbuzz(4, 3, 5)
     4
-    >>> fizzbuzz(4, 3, 5)
-    4
+    >>> fizzbuzz(4, 4, 6)
+    'fizz'
 
     """
     if n % fizz == 0 and n % buzz == 0:
