@@ -12,7 +12,7 @@ Currently, this script is a simple fizzbuzz generator.
 
 You can also run tests with::
 
-    $ python3 -m pytest -v --doctest-modules \
+    $ python3 -m pytest -v --log-level=debug --doctest-modules \
               --cov=fizzbuzz ./fizzbuzz.py
     $ python3 -m coverage html
 
@@ -155,7 +155,4 @@ import shlex                    # noqa: E402
 ])
 def test_main(args, expected):
     options = parse_args(shlex.split(args))
-    options.debug = True
-    options.silent = True
-    setup_logging(options)
     assert main(options) == expected
