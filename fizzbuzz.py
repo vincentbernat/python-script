@@ -33,7 +33,6 @@ import logging
 import logging.handlers
 import os
 import sys
-from typing import List, Union
 
 logger = logging.getLogger(os.path.splitext(os.path.basename(sys.argv[0]))[0])
 
@@ -44,7 +43,7 @@ class CustomFormatter(
     pass
 
 
-def parse_args(args: List[str] = sys.argv[1:]) -> argparse.Namespace:
+def parse_args(args: list[str] = sys.argv[1:]) -> argparse.Namespace:
     """Parse arguments."""
     parser = argparse.ArgumentParser(
         description=sys.modules[__name__].__doc__, formatter_class=CustomFormatter
@@ -84,7 +83,7 @@ def setup_logging(options: argparse.Namespace) -> None:
             sh = logging.handlers.SysLogHandler(address="/dev/log", facility=facility)
             sh.setFormatter(
                 logging.Formatter(
-                    "{0}[{1}]: %(message)s".format(logger.name, os.getpid())
+                    f"{logger.name}[{os.getpid()}]: %(message)s"
                 )
             )
             root.addHandler(sh)
@@ -94,7 +93,7 @@ def setup_logging(options: argparse.Namespace) -> None:
             root.addHandler(ch)
 
 
-def fizzbuzz(n: int, fizz: int, buzz: int) -> Union[str, int]:
+def fizzbuzz(n: int, fizz: int, buzz: int) -> str | int:
     """Compute fizzbuzz nth item given modulo values for fizz and buzz.
 
     >>> fizzbuzz(5, fizz=3, buzz=5)
@@ -118,9 +117,9 @@ def fizzbuzz(n: int, fizz: int, buzz: int) -> Union[str, int]:
     return n
 
 
-def main(options: argparse.Namespace) -> List[str]:
+def main(options: argparse.Namespace) -> list[str]:
     """Compute a fizzbuzz set of strings and return them as an array."""
-    logger.debug("compute fizzbuzz from {} to {}".format(options.start, options.end))
+    logger.debug(f"compute fizzbuzz from {options.start} to {options.end}")
     return [
         str(fizzbuzz(i, fizz=options.fizz, buzz=options.buzz))
         for i in range(options.start, options.end + 1)
