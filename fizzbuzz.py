@@ -129,7 +129,7 @@ if __name__ == "__main__":
     try:
         print("\n".join(main(options)))
     except Exception as e:
-        logger.exception("%s", e)
+        logger.exception("%s", e)  # noqa: TRY401
         sys.exit(1)
     sys.exit(0)
 
