@@ -82,9 +82,7 @@ def setup_logging(options: argparse.Namespace) -> None:
             facility = logging.handlers.SysLogHandler.LOG_DAEMON
             sh = logging.handlers.SysLogHandler(address="/dev/log", facility=facility)
             sh.setFormatter(
-                logging.Formatter(
-                    f"{logger.name}[{os.getpid()}]: %(message)s"
-                )
+                logging.Formatter(f"{logger.name}[{os.getpid()}]: %(message)s")
             )
             root.addHandler(sh)
         else:
