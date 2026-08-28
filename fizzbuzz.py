@@ -12,7 +12,7 @@ Currently, this script is a simple fizzbuzz generator.
 
 You can also run tests with::
 
-    $ python3 -m pytest -v --log-level=debug --doctest-modules \
+    $ python3 -m pytest -v --log-level=debug --doctest-modules \\
               --cov=fizzbuzz ./fizzbuzz.py
     $ python3 -m coverage html
 
@@ -45,9 +45,7 @@ class CustomFormatter(
 
 def parse_args(args: list[str] = sys.argv[1:]) -> argparse.Namespace:
     """Parse arguments."""
-    parser = argparse.ArgumentParser(
-        description=sys.modules[__name__].__doc__, formatter_class=CustomFormatter
-    )
+    parser = argparse.ArgumentParser(__doc__, formatter_class=CustomFormatter)
 
     g1 = parser.add_mutually_exclusive_group()
     g1.add_argument(
